@@ -1,1 +1,45 @@
 
+import java.util.*;
+public class n{
+    public static int searchelement(int arr[],int target ,int si,int ei ){
+        if(si>ei){
+            return -1;
+        }
+        int mid =si+(ei-si)/2;
+        //ist case 
+        if(arr[mid]==target){
+            return mid;
+        }
+
+        // main cases of  locating mid in lines
+        if(arr[si]<=arr[mid]){
+
+            // case 1
+            if(target>=si&&target<=arr[mid]){
+             return   searchelement(arr, target, si, mid-1);
+            }
+            else
+            { return searchelement(arr, target, mid+1, ei);
+}
+        } 
+        else {
+            if(target <=ei){
+               return searchelement(arr, target, mid+1, ei);
+
+            }
+            else 
+         {  return  searchelement(arr, target, si, mid-1);}
+
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int arr[]={3,5,7,9,0,1};
+        int x=searchelement(arr, 5, 0, arr.length-1 );
+        System.out.println(x);
+
+    
+    }
+}
+
